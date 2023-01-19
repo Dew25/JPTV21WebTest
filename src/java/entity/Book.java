@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 public class Book implements Serializable{
     private Long id;
     private String name;
-    private List<Author> authors;
+    private List<Author> authors = new ArrayList<>();
     private int publishedYear;
     private int quantity;
     private int count;

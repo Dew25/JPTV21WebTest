@@ -7,6 +7,7 @@ package servlets;
 
 import entity.Author;
 import entity.Book;
+import entity.Reader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,9 +22,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Melnikov
  */
-@WebServlet(name = "MyServlet", urlPatterns = {"/pageJsp2","/pageJsp1","/book"})
+@WebServlet(name = "MyServlet", urlPatterns = {
+    "/pageJsp1",
+    "/pageJsp2",
+    "/books",
+    "/reader",
+    
+})
 public class MyServlet extends HttpServlet {
-   
+    
+   private List<Book> books = new ArrayList<>();
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,7 +44,7 @@ public class MyServlet extends HttpServlet {
             request.setAttribute("info", "Эта информация передана из Java в jsp страницу");
             request.getRequestDispatcher("/WEB-INF/pageJsp2.jsp").forward(request, response);
         }else
-        if("/book".equals(request.getServletPath())){
+        if("/books".equals(request.getServletPath())){
             Author author = new Author();
             author.setFirstname("Лев");
             author.setLastname("Толстой");
@@ -50,9 +59,34 @@ public class MyServlet extends HttpServlet {
             List<Book> books = new ArrayList<>();
             books.add(book);
             author.setBooks(books);
-            request.setAttribute("book", book);
-            request.getRequestDispatcher("/book.jsp").forward(request, response);
+            Book book1 = new Book();
+            book1.setName("12 стульев");
+            book1.setCount(2);
+            book1.setQuantity(2);
+            book1.setPublishedYear(2022);
+            Author author1 = new Author();
+            author1.setFirstname("Илья");
+            author1.setLastname("Ильф");
+            Author author2 = new Author();
+            author2.setLastname("Петров");
+            author2.setFirstname("Евгений");
+            book1.getAuthors().add(author1);
+            book1.getAuthors().add(author2);
+            author1.getBooks().add(book1);
+            author2.getBooks().add(book1);
+            books.add(book1);
+            request.setAttribute("books", books);
+            request.getRequestDispatcher("/listBooks.jsp").forward(request, response);
+        }else
+        if("/reader".equals(request.getServletPath())){
+            Reader reader = new Reader();
+            reader.setFirstname("Иван");
+            reader.setLastname("Иванов");
+            reader.setPhone("5665564565");
+            request.setAttribute("reader", reader);
+            request.getRequestDispatcher("/reader.jsp").forward(request, response);
         }
+        
     }
   
     @Override

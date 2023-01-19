@@ -5,22 +5,17 @@
  */
 package entity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  *
  * @author Melnikov
  */
-public class Author implements Serializable{
+public class Reader {
     private Long id;
     private String firstname;
     private String lastname;
-    private List<Book>books = new ArrayList<>();
+    private String phone;
 
-    public Author() {
+    public Reader() {
     }
 
     public Long getId() {
@@ -47,21 +42,21 @@ public class Author implements Serializable{
         this.lastname = lastname;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "Author{" 
+        return "Reader{" 
                 + "id=" + id 
                 + ", firstname=" + firstname 
                 + ", lastname=" + lastname 
-                + ", books=" + Arrays.toString(books.toArray())
+                + ", phone=" + phone 
                 + '}';
     }
     

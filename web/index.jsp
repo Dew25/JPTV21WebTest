@@ -14,7 +14,8 @@
     <body>
         <center><h1>Привет JPTV21!</h1></center>
        
-        <center><a href="book">Информация о книге</a></center>
+        <center><a href="books">Список книг</a></center>
+        <center><a href="reader">Информация о читателе</a></center>
         <center><a href="pageJsp1.jsp">pageJsp1</a></center>
         <center><a href="pageJsp1">pageJsp1 через сервлет</a></center>
         <center><a href="pageJsp2">pageJsp2</a></center>

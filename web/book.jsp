@@ -4,6 +4,7 @@
     Author     : Melnikov
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,7 @@
         <title>Инфорамация о книге</title>
     </head>
     <body>
+   
         <h1>Книга: ${book.name}</h1>
         <p>Авторы: <c:forEach var="author" items="${book.authors}">
                         ${author.firstname} ${author.lastname}
